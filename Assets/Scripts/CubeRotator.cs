@@ -6,21 +6,21 @@ using UnityEngine.UIElements;
 
 public class CubeRotator : MonoBehaviour
 {
-    private float _rotationSpeed = 5f;
+    private float _rotationSpeed;
+    private float _inputX;
+    private float _inputY;
 
-    private Quaternion _newRotation = Quaternion.identity;
-
-    private void Update()
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {       
-            _newRotation *= Quaternion.AngleAxis(90, Vector3.up);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {       
-            _newRotation *= Quaternion.AngleAxis(-90, Vector3.up);
-        }
+        _rotationSpeed = 100.0f;
+    }
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, _newRotation, _rotationSpeed * Time.deltaTime);
+    void Update()
+    {
+        _inputX = Input.GetAxis("Horizontal");
+        _inputY = Input.GetAxis("Vertical");
+
+        transform.Rotate(Vector3.down * _inputX * _rotationSpeed * Time.deltaTime, Space.World);
+        transform.Rotate(Vector3.right * _inputY * _rotationSpeed * Time.deltaTime, Space.World);
     }
 }
