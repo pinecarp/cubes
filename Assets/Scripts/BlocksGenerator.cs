@@ -11,6 +11,7 @@ public class BlocksGenerator : MonoBehaviour
     public GameObject grass;
     private GameObject _firstBlock;
     private GameObject _newBlock;
+    private GameObject _spawnBlock;
     private GameObject _firstSpawn;
 
     public Transform spawnR;
@@ -38,55 +39,66 @@ public class BlocksGenerator : MonoBehaviour
             _newBlock = Instantiate(grass, _firstSpawn.transform.position, Quaternion.identity);
             _newBlock.name = "Grass" + _blocksNumber;
             spawnL = _newBlock.transform.Find("Spawn Point Left");
-            
+
             _blocksNumber++;
             
             blocks.Add(_newBlock);
             _newBlock.transform.parent = cube.transform;
             
             _firstBlock = _newBlock;
+            _spawnBlock = _newBlock;
         }
         
         else
         {
-            if (_linesNumber < 10)
-            {
-                if (spawnL.GetComponent<SpawnPoint>().isFull == false && blocks.Count % 10 != 0)
+                if (_linesNumber < 100)
                 {
+                    if (spawnL.GetComponent<SpawnPoint>().isFull == false && blocks.Count % 10 != 0)
+                    {
                     
+                        spawnL.GetComponent<SpawnPoint>().isFull = true;
+                        _newBlock = Instantiate(grass, spawnL.transform.position, Quaternion.identity);
+                        spawnL = _newBlock.transform.Find("Spawn Point Left");
+                        _newBlock.name = "Grass " + _blocksNumber;
+        
+                        _blocksNumber++;
+                    
+                        blocks.Add(_newBlock);
+                        _newBlock.transform.parent = cube.transform;
+                    }
+                }
+                
+                if (blocks.Count % 10 == 0 && blocks.Count % 100 != 0)
+                {
                     spawnL.GetComponent<SpawnPoint>().isFull = true;
-                    _newBlock = Instantiate(grass, spawnL.transform.position, Quaternion.identity);
-                    spawnL = _newBlock.transform.Find("Spawn Point Left");
-                    _newBlock.name = "Grass " + _blocksNumber;
+                    _firstBlock = Instantiate(grass, _firstBlock.transform.Find("Spawn Point Right").transform.position, Quaternion.identity);
+                    spawnL = _firstBlock.transform.Find("Spawn Point Left");
+                    _firstBlock.name = "Grass " + _blocksNumber;
 
+                    _linesNumber++;
                     _blocksNumber++;
                     
-                    blocks.Add(_newBlock);
-                    _newBlock.transform.parent = cube.transform;
+                    blocks.Add(_firstBlock);
+                    _firstBlock.transform.parent = cube.transform;
                 }
-            }
-            
-            if (blocks.Count % 10 == 0 && blocks.Count % 100 != 0)
-            {
-                spawnL.GetComponent<SpawnPoint>().isFull = true;
-                _firstBlock = Instantiate(grass, _firstBlock.transform.Find("Spawn Point Right").transform.position, Quaternion.identity);
-                spawnL = _firstBlock.transform.Find("Spawn Point Left");
-                _firstBlock.name = "Grass " + _blocksNumber;
 
-                _linesNumber++;
-                _blocksNumber++;
-                
-                blocks.Add(_firstBlock);
-                _firstBlock.transform.parent = cube.transform;
-            }
+                if (blocks.Count % 100 == 0 & blocks.Count < 999)
+                {
+                    _newBlock.transform.Find("Spawn Point Right").GetComponent<SpawnPoint>().isFull = true;
+                    spawnU = _spawnBlock.transform.Find("Spawn Point Up");
 
-            if (blocks.Count % 100 == 0)
-            {
-                _newBlock.transform.Find("Spawn Point Right").GetComponent<SpawnPoint>().isFull = true;
-            }
-            
+                    _newBlock = Instantiate(grass, spawnU.transform.position, Quaternion.identity);
+                    _newBlock.name = "Grass " + _blocksNumber;
+                    spawnL = _newBlock.transform.Find("Spawn Point Left");
+
+                    _firstBlock = _newBlock;
+                    _spawnBlock = _newBlock;
+                    
+                    _newBlock.transform.parent = cube.transform;
+                    blocks.Add(_firstBlock);
+                    
+                    _blocksNumber++;
+                }
         }
-        
-        Debug.Log(_blocksNumber);
     }
 }
