@@ -502,8 +502,9 @@ MonoBehaviour:
   blocks: []
   cube: {fileID: 1096306403}
   grass: {fileID: 2674214715794544460, guid: 8e49752be8562477b81db36f5ed1232e, type: 3}
+  stone: {fileID: 2186026834864043535, guid: b6c8c9aea8bdc48d88ddc4e68de0cf8c, type: 3}
   spawnR: {fileID: 0}
-  spawnL: {fileID: 0}
+  spawnF: {fileID: 0}
   spawnU: {fileID: 0}
 --- !u!4 &2023420735
 Transform:
