@@ -1,10 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Block : MonoBehaviour
 {
+    public GameObject grass;
+    private GameObject newGrass;
+    
     private BlocksGenerator _blocksGenerator;
 
     private Transform spawnU;
@@ -13,11 +17,14 @@ public class Block : MonoBehaviour
     private Transform spawnL;
     private Transform spawnF;
     private Transform spawnB;
+
+    public int nearestBlocks;
     
     public List<Transform> spawns = new List<Transform>();
 
     public bool isTop;
-
+    public bool inBox;
+    public bool hangingBlock;
 
     private void Start()
     {
@@ -36,13 +43,8 @@ public class Block : MonoBehaviour
         spawns.Add(spawnL);
         spawns.Add(spawnF);
         spawns.Add(spawnB);
-    }
 
-    private void Update()
-    {
-        for (int i = 0; i < spawns.Count; i++)
-        {
-
-        }
+        inBox = true;
     }
 }
+

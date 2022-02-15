@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6586283565245606856}
   - component: {fileID: 2368237158375333715}
+  - component: {fileID: 1052367342254286874}
+  - component: {fileID: 3309878587541493485}
   m_Layer: 0
   m_Name: Spawn Point Down
   m_TagString: SpawnPoint
@@ -44,7 +46,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16260fa0124a54f71839bc5cb6cebd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grass: {fileID: 2674214715794544460}
   isFull: 0
+  isReallyFull: 0
+  isOutOfBox: 0
+--- !u!65 &1052367342254286874
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328069783458290191}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3309878587541493485
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328069783458290191}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2674214715794544460
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e990a558baa2455dbb2d6a39012489f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grass: {fileID: 2674214715794544460}
+  nearestBlocks: 0
   spawns: []
+  isTop: 0
+  inBox: 0
 --- !u!1 &2674214715813089563
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +210,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2674214715813089562}
   - component: {fileID: 4676551639566999350}
+  - component: {fileID: 1499051386268304614}
+  - component: {fileID: 1183796157099109760}
   m_Layer: 0
   m_Name: Spawn Point Right
   m_TagString: SpawnPoint
@@ -206,7 +246,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16260fa0124a54f71839bc5cb6cebd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grass: {fileID: 2674214715794544460}
   isFull: 0
+  isReallyFull: 0
+  isOutOfBox: 0
+--- !u!65 &1499051386268304614
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674214715813089563}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1183796157099109760
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674214715813089563}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2674214716128383681
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +289,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2674214716128383680}
   - component: {fileID: 1266657786867928529}
+  - component: {fileID: 7948799903494092535}
+  - component: {fileID: 8725612603743042028}
   m_Layer: 0
   m_Name: Spawn Point Up
   m_TagString: SpawnPoint
@@ -251,7 +325,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16260fa0124a54f71839bc5cb6cebd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grass: {fileID: 2674214715794544460}
   isFull: 0
+  isReallyFull: 0
+  isOutOfBox: 0
+--- !u!65 &7948799903494092535
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674214716128383681}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8725612603743042028
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674214716128383681}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2674214717611632575
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +368,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2674214717611632574}
   - component: {fileID: 4695402075638390675}
+  - component: {fileID: 1178887790680514661}
+  - component: {fileID: 5743174947310833612}
   m_Layer: 0
   m_Name: Spawn Point Forward
   m_TagString: SpawnPoint
@@ -296,7 +404,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16260fa0124a54f71839bc5cb6cebd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grass: {fileID: 2674214715794544460}
   isFull: 0
+  isReallyFull: 0
+  isOutOfBox: 0
+--- !u!65 &1178887790680514661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674214717611632575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5743174947310833612
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674214717611632575}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4153443325896989143
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +447,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2489525553717254005}
   - component: {fileID: 3919026382744918657}
+  - component: {fileID: 3757464798428706411}
+  - component: {fileID: 6236948804717978501}
   m_Layer: 0
   m_Name: Spawn Point Back
   m_TagString: SpawnPoint
@@ -341,7 +483,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16260fa0124a54f71839bc5cb6cebd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grass: {fileID: 2674214715794544460}
   isFull: 0
+  isReallyFull: 0
+  isOutOfBox: 0
+--- !u!65 &3757464798428706411
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153443325896989143}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &6236948804717978501
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153443325896989143}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5219891140975770016
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +526,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2878362052101152310}
   - component: {fileID: 932292784814645214}
+  - component: {fileID: 5747012095049118106}
+  - component: {fileID: 5686468137045964260}
   m_Layer: 0
   m_Name: Spawn Point Left
   m_TagString: SpawnPoint
@@ -386,4 +562,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16260fa0124a54f71839bc5cb6cebd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grass: {fileID: 2674214715794544460}
   isFull: 0
+  isReallyFull: 0
+  isOutOfBox: 0
+--- !u!65 &5747012095049118106
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5219891140975770016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5686468137045964260
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5219891140975770016}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

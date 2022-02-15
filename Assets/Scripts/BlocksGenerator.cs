@@ -16,10 +16,9 @@ public class BlocksGenerator : MonoBehaviour
     private GameObject _spawnBlock;
     private GameObject _firstSpawn;
 
-
-    public Transform spawnR;
-    public Transform spawnF;
-    public Transform spawnU;
+    
+    private Transform spawnF;
+    private Transform spawnU;
 
     private SpawnPoint _spawnPoint;
 
@@ -44,15 +43,18 @@ public class BlocksGenerator : MonoBehaviour
             random = rand.Next(1, 10);
             
             _firstSpawn.GetComponent<SpawnPoint>().isFull = true;
-            
+
             if (random > 8)
+            {
                 _newBlock = Instantiate(grass, _firstSpawn.transform.position, Quaternion.identity);
+                _newBlock.name = "Grass " + _blocksNumber;
+            }
             else
             {
                 _newBlock = Instantiate(stone, _firstSpawn.transform.position, Quaternion.identity);
+                _newBlock.name = "Stone " + _blocksNumber;
             }
             
-            _newBlock.name = "Block " + _blocksNumber;
             spawnF = _newBlock.transform.Find("Spawn Point Forward");
 
             _blocksNumber++;
@@ -66,6 +68,8 @@ public class BlocksGenerator : MonoBehaviour
         
         else
         {
+            if (blocks.Count < 1000)
+            {
                 if (_linesNumber < 100)
                 {
                     if (spawnF.GetComponent<SpawnPoint>().isFull == false && blocks.Count % 10 != 0)
@@ -73,44 +77,54 @@ public class BlocksGenerator : MonoBehaviour
                         random = rand.Next(1, 10);
                         spawnF.GetComponent<SpawnPoint>().isFull = true;
 
-                        if ((_newBlock.CompareTag("Stone") && random < 5) || (blocks.Count < 200 && random < 9) || ((blocks.Count >= 200 && blocks.Count < 500) && random < 7) || ((blocks.Count >= 500 && blocks.Count < 700) && random < 6) || ((blocks.Count >= 700 && blocks.Count < 900) && random < 5))
+                        if ((_newBlock.CompareTag("Stone") && random < 5) || (blocks.Count < 200 && random < 9) ||
+                            ((blocks.Count >= 200 && blocks.Count < 500) && random < 7) ||
+                            ((blocks.Count >= 500 && blocks.Count < 700) && random < 6) ||
+                            ((blocks.Count >= 700 && blocks.Count < 900) && random < 5))
                         {
                             _newBlock = Instantiate(stone, spawnF.transform.position, Quaternion.identity);
+                            _newBlock.name = "Stone " + _blocksNumber;
                         }
                         else
                         {
                             _newBlock = Instantiate(grass, spawnF.transform.position, Quaternion.identity);
+                            _newBlock.name = "Grass " + _blocksNumber;
                         }
-                        
+
                         spawnF = _newBlock.transform.Find("Spawn Point Forward");
-                        _newBlock.name = "Grass " + _blocksNumber;
-        
+
                         _blocksNumber++;
-                    
+
                         blocks.Add(_newBlock);
                         _newBlock.transform.parent = cube.transform;
                     }
                 }
-                
+
                 if (blocks.Count % 10 == 0 && blocks.Count % 100 != 0)
                 {
                     spawnF.GetComponent<SpawnPoint>().isFull = true;
 
-                    if ((blocks.Count < 200 && random < 9) || ((blocks.Count >= 200 && blocks.Count < 500) && random < 7) || ((blocks.Count >= 500 && blocks.Count < 700) && random < 6) || ((blocks.Count >= 700 && blocks.Count < 900) && random < 5))
+                    if ((blocks.Count < 200 && random < 9) ||
+                        ((blocks.Count >= 200 && blocks.Count < 500) && random < 7) ||
+                        ((blocks.Count >= 500 && blocks.Count < 700) && random < 6) ||
+                        ((blocks.Count >= 700 && blocks.Count < 900) && random < 5))
                     {
-                        _firstBlock = Instantiate(stone, _firstBlock.transform.Find("Spawn Point Right").transform.position, Quaternion.identity);
+                        _firstBlock = Instantiate(stone,
+                            _firstBlock.transform.Find("Spawn Point Right").transform.position, Quaternion.identity);
+                        _firstBlock.name = "Stone " + _blocksNumber;
                     }
                     else
                     {
-                        _firstBlock = Instantiate(grass, _firstBlock.transform.Find("Spawn Point Right").transform.position, Quaternion.identity);
+                        _firstBlock = Instantiate(grass,
+                            _firstBlock.transform.Find("Spawn Point Right").transform.position, Quaternion.identity);
+                        _firstBlock.name = "Grass " + _blocksNumber;
                     }
-                    
+
                     spawnF = _firstBlock.transform.Find("Spawn Point Forward");
-                    _firstBlock.name = "Grass " + _blocksNumber;
 
                     _linesNumber++;
                     _blocksNumber++;
-                    
+
                     blocks.Add(_firstBlock);
                     _firstBlock.transform.parent = cube.transform;
                 }
@@ -119,30 +133,34 @@ public class BlocksGenerator : MonoBehaviour
                 {
                     _newBlock.transform.Find("Spawn Point Right").GetComponent<SpawnPoint>().isFull = true;
                     spawnU = _spawnBlock.transform.Find("Spawn Point Up");
-                    
-                    if ((blocks.Count < 200 && random < 9) || ((blocks.Count >= 200 && blocks.Count < 500) && random < 7) || ((blocks.Count >= 500 && blocks.Count < 700) && random < 6) || ((blocks.Count >= 700 && blocks.Count < 900) && random < 5))
+
+                    if ((blocks.Count < 200 && random < 9) ||
+                        ((blocks.Count >= 200 && blocks.Count < 500) && random < 7) ||
+                        ((blocks.Count >= 500 && blocks.Count < 700) && random < 6) ||
+                        ((blocks.Count >= 700 && blocks.Count < 900) && random < 5))
                     {
                         _newBlock = Instantiate(stone, spawnU.transform.position, Quaternion.identity);
+                        _newBlock.name = "Stone " + _blocksNumber;
                     }
                     else
                     {
                         _newBlock = Instantiate(grass, spawnU.transform.position, Quaternion.identity);
+                        _newBlock.name = "Grass " + _blocksNumber;
                     }
-
-                    _newBlock.name = "Grass " + _blocksNumber;
+                    
                     spawnF = _newBlock.transform.Find("Spawn Point Forward");
 
                     _firstBlock = _newBlock;
                     _spawnBlock = _newBlock;
                     _blocksNumber++;
-                    
+
                     blocks.Add(_firstBlock);
                     _newBlock.transform.parent = cube.transform;
                 }
+            }
         }
         
-        
-        if (blocks.Count >= 900)
+        if (blocks.Count >= 900 && blocks.Count <= 1000)
         {
             _newBlock.GetComponent<Block>().isTop = true;
             _firstBlock.GetComponent<Block>().isTop = true;

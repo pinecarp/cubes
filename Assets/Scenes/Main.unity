@@ -167,7 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16260fa0124a54f71839bc5cb6cebd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grass: {fileID: 0}
+  parentBlock: {fileID: 0}
   isFull: 0
+  isReallyFull: 0
+  isHangingCorner: 0
+  colliders: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2023420735}
   - component: {fileID: 2023420734}
+  - component: {fileID: 2023420736}
   m_Layer: 0
   m_Name: Randomizer
   m_TagString: GameController
@@ -503,9 +509,6 @@ MonoBehaviour:
   cube: {fileID: 1096306403}
   grass: {fileID: 2674214715794544460, guid: 8e49752be8562477b81db36f5ed1232e, type: 3}
   stone: {fileID: 2186026834864043535, guid: b6c8c9aea8bdc48d88ddc4e68de0cf8c, type: 3}
-  spawnR: {fileID: 0}
-  spawnF: {fileID: 0}
-  spawnU: {fileID: 0}
 --- !u!4 &2023420735
 Transform:
   m_ObjectHideFlags: 0
@@ -521,3 +524,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2023420736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023420733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe06bc82696934664b6805c2a67f3d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hangingBlocks: []
+  grass: {fileID: 2674214715794544460, guid: 8e49752be8562477b81db36f5ed1232e, type: 3}
