@@ -16,7 +16,6 @@ public class BlocksGenerator : MonoBehaviour
     private GameObject _spawnBlock;
     private GameObject _firstSpawn;
 
-    
     private Transform spawnF;
     private Transform spawnU;
 
@@ -68,7 +67,7 @@ public class BlocksGenerator : MonoBehaviour
         
         else
         {
-            if (blocks.Count < 1000)
+            while (blocks.Count < 1000)
             {
                 if (_linesNumber < 100)
                 {
@@ -157,14 +156,15 @@ public class BlocksGenerator : MonoBehaviour
                     blocks.Add(_firstBlock);
                     _newBlock.transform.parent = cube.transform;
                 }
+                
+                
+                if (blocks.Count >= 900 && blocks.Count <= 1000)
+                {
+                    _newBlock.GetComponent<Block>().isTop = true;
+                    _firstBlock.GetComponent<Block>().isTop = true;
+                    _spawnBlock.GetComponent<Block>().isTop = true;
+                }
             }
-        }
-        
-        if (blocks.Count >= 900 && blocks.Count <= 1000)
-        {
-            _newBlock.GetComponent<Block>().isTop = true;
-            _firstBlock.GetComponent<Block>().isTop = true;
-            _spawnBlock.GetComponent<Block>().isTop = true;
         }
     }
 }
